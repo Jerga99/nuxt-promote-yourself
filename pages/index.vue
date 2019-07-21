@@ -1,57 +1,12 @@
 <template>
   <div>
-    <section
-      class="hero is-black is-medium">
-      <div class="hero-body">
-        <div
-          class="hero-img"
-          :style="{ background : `url(https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1631&q=80) no-repeat center center`}">
-        </div>
-        <div class="container">
-          <h1 class="title">
-            Super Amazing Promo
-          </h1>
-          <h2 class="subtitle">
-            Super Amazing Promo Subtitle
-          </h2>
-          <a target="_" :href="'#'" class="button is-danger">Learn More!</a>
-        </div>
-      </div>
-    </section>
+    <Hero />
     <section class="section">
       <div class="container">
         <h1 class="title">Featured Courses</h1>
         <div class="columns">
           <div class="column is-one-quarter">
-            <!-- CARD-ITEM -->
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by2">
-                  <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1694&q=80" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">Some Super Title</p>
-                    <p class="subtitle is-6"><i>Some Super Subtitle</i></p>
-                  </div>
-                </div>
-                <div class="content">
-                  Some Description
-                  <br>
-                </div>
-                <div class="price-box">
-                  <span class="price">150$</span>
-                  <span class="disc-price">9.99$</span>
-                </div>
-              </div>
-              <footer class="card-footer">
-                <nuxt-link :to="''" class="card-footer-item">Learn More</nuxt-link>
-                <a target="_" :href="'#'" class="card-footer-item">Enroll</a>
-              </footer>
-            </div>
-            <!-- CARD-ITEM-END -->
+            <CourseCard />
           </div>
         </div>
       </div>
@@ -61,25 +16,7 @@
         <h1 class="title">Featured Articles</h1>
         <div class="columns">
           <div class="column is-one-quarter">
-            <!-- CARD-ITEM -->
-            <div class="card">
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">Some Super Title</p>
-                    <p class="subtitle is-6"><i>Some Super Subtitle</i></p>
-                  </div>
-                </div>
-                <div class="content">
-                  Some Description
-                  <br>
-                </div>
-              </div>
-              <footer class="card-footer">
-                <nuxt-link :to="'#'" class="card-footer-item">Read More</nuxt-link>
-              </footer>
-            </div>
-            <!-- CARD-ITEM-END -->
+            <BlogCard />
           </div>
         </div>
       </div>
@@ -88,68 +25,17 @@
 </template>
 
 <script>
-
+import CourseCard from '~/components/CourseCard'
+import BlogCard from '~/components/BlogCard'
+import Hero from '~/components/shared/Hero'
 export default {
-  components: {}
+  components: {
+    CourseCard, BlogCard, Hero
+  }
 }
 </script>
 
 <style scoped lang="scss">
-  // card item
-  .card-image:hover {
-    cursor: pointer;
-    opacity: 0.9;
-  }
-  .price-box {
-    text-align: right;
-    .price {
-      color: gray;
-      font-size: 16px;
-      text-decoration: line-through;
-    }
-    .disc-price {
-      font-size: 21px;
-      font-weight: bold;
-    }
-  }
-  // card item end
-
-
-  // hero
-  .hero-body {
-    position: relative;
-  }
-  .hero-img {
-    opacity: 0.8;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  .user-avatar {
-    display: inline-block;
-  }
-  .is-black {
-    background-color: black;
-  }
-  .title {
-    font-weight: bold;
-    font-size: 45px;
-  }
-  .subtitle {
-    /*font-weight: bold;*/
-    font-size: 25px;
-  }
-  .author-name {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  // hero
 
   // Home page
   .links {
