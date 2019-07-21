@@ -1,0 +1,44 @@
+{
+  "name": "nuxt-promo-yourself",
+  "version": "1.0.0",
+  "description": "My super Nuxt.js project",
+  "author": "Filip jerga",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "@nuxtjs/axios": "^5.3.6",
+    "nuxt": "^2.0.0",
+    "async": "^3.0.1",
+    "async-lock": "^1.2.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "bulma": "^0.7.5",
+    "connect-mongodb-session": "^2.2.0",
+    "express-session": "^1.16.2",
+    "highlight.js": "^9.15.8",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.6.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "portal-vue": "^2.1.5",
+    "slugify": "^1.3.4",
+    "tiptap": "^1.23.0",
+    "tiptap-extensions": "^1.24.0",
+    "vue-toasted": "^1.1.27",
+    "vuejs-paginate": "^2.1.0",
+    "vuelidate": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0"
+  }
+}
