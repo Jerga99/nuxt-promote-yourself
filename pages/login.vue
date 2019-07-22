@@ -12,11 +12,13 @@
             <form>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large"
-                         type="email"
-                         placeholder="Your Email"
-                         autofocus=""
-                         autocomplete="email">
+                  <input
+                    v-model="form.email"
+                    class="input is-large"
+                    type="email"
+                    placeholder="Your Email"
+                    autofocus=""
+                    autocomplete="email">
                   <!-- <div class="form-error">
                     <span class="help is-danger">Email is required</span>
                     <span class="help is-danger">Email address is not valid</span>
@@ -26,6 +28,7 @@
               <div class="field">
                 <div class="control">
                   <input
+                    v-model="form.password"
                     class="input is-large"
                     type="password"
                     placeholder="Your Password"
@@ -37,7 +40,7 @@
               </div>
               <!-- Login Button -->
               <button
-                @click.prevent="() => {}"
+                @click.prevent="login"
                 class="button is-block is-info is-large is-fullwidth">
                 Login
               </button>
@@ -54,6 +57,35 @@
     </div>
   </section>
 </template>
+<script>
+import { required, email } from 'vuelidate/lib/validators'
+export default {
+  data() {
+    return {
+      form: {
+        email: null,
+        password: null
+      }
+    }
+  },
+  validations: {
+    form: {
+      email: {
+        email,
+        required
+      },
+      password: {
+        required
+      }
+    }
+  },
+  methods: {
+    login() {
+      console.log(this.form)
+    }
+  }
+}
+</script>
 
 <style scoped>
   .hero.is-success {
