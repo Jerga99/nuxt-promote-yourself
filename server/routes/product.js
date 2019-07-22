@@ -5,6 +5,7 @@ const AuthCtrl = require('../controllers/auth');
 const ProductCtrl = require('../controllers/product');
 
 router.get('', ProductCtrl.getProducts);
+
 router.get('/user-products',
            AuthCtrl.onlyAuthUser,
            AuthCtrl.onlyAdmin,
