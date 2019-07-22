@@ -8,12 +8,12 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">{{course.title}}</p>
+          <p class="title is-4">{{course.title | shortenText(45)}}</p>
           <p class="subtitle is-6"><i>by {{course.author.name}}</i></p>
         </div>
       </div>
       <div class="content">
-        {{course.subtitle}}
+        {{course.subtitle | shortenText(45)}}
         <br>
       </div>
       <div class="price-box">
