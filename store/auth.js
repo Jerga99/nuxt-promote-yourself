@@ -6,16 +6,13 @@ export const state = () => ({
 
 
 export const actions = {
-  login({commit}, loginData) {
-    debugger
+  login({commit, state}, loginData) {
     return this.$axios.$post('/api/v1/users/login', loginData)
       .then(user => {
-        debugger
         commit('setAuthUser', user)
+        return state.user
       })
-      .catch(error => {
-        return Promise.reject(error)
-      })
+      .catch(error => Promise.reject(error))
   }
 }
 
