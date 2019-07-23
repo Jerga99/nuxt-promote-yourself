@@ -27,6 +27,17 @@ export const actions = {
       })
       .catch(error => Promise.reject(error))
   },
+  register(_, registerData) {
+    return this.$axios.$post('/api/v1/users/register', registerData)
+      .catch(error => {
+         let errorMessage = 'Uuups, something went wrong, try to register again!'
+         if (error.response.data.errors) {
+           errorMessage = error.response.data.errors.message
+         }
+         return Promise.reject(errorMessage)
+      })
+  },
+
   logout({commit}) {
     return this.$axios.$post('/api/v1/users/logout')
       .then(() => {

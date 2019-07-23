@@ -18,3 +18,27 @@
 6. create logout function in Navbar component
 7. dispatch logout action when clicking logout button
 8. in case of success dispatch, navigate user to login page
+
+
+
+
+1. Create "register" action
+2. expect to receive register form data to an action
+3. send a POST request to "/api/v1/users/register" with register form data
+4. You don't need to handle "then" block in action just handle "catch" where
+you will return Promise.reject with error
+5. in register page create function "register" and dispatch register action with
+register form data
+6. In case of success redirect user to login page
+7. in case of error display toast message with an error
+8. on register button click call function register
+9. Test your functionality, register an user and login after
+NOTE: provide all data during registration, also an valid avatar url because
+you can get an error in navbar since avatar would be undefined
+GOOD LUCK (:
+
+
+
+
+
+

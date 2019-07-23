@@ -135,11 +135,11 @@ export default {
     form: {
       username: {
         required,
-        minLength: minLength(6)
+        // minLength: minLength(6)
       },
       name: {
         required,
-        minLength: minLength(6)
+        // minLength: minLength(6)
       },
       avatar: {
         url,
@@ -159,25 +159,23 @@ export default {
       }
     }
   },
+  computed: {
+    isFormValid() {
+      return !this.$v.form.$invalid
+    }
+  },
   methods: {
     register() {
       this.$v.form.$touch()
-      console.log(this.form)
+      if (this.isFormValid) {
+        this.$store.dispatch('auth/register', this.form)
+          .then(_ => this.$router.push('/login'))
+          .catch(error => this.$toasted.error(error, {duration: 3000}))
+      }
     }
   }
 }
 </script>
-
-
-<!-- VALIDATORS Assignmnet -->
-<!-- username: required, minLegth(6) -->
-<!-- name: required, minLegth(6) -->
-<!-- email: required, email -->
-<!-- avatar: url -->
-<!-- password: required, minLegth(6) -->
-<!-- passwordConfirmation: required, sameAs('password') -->
-<!-- create @blur validation -->
-<!-- disable register button if form is $invalid -->
 <style scoped>
   .hero.is-success {
     background: #F2F6FA;
