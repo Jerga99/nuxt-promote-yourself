@@ -9,3 +9,12 @@
 7. Dispatch login action when clicking login button and debug this functionality to make sure you are setting user to a state
 
 
+
+1. Create logout Action
+2. send a POST request to '/api/v1/users/logout'
+3. in case of success in "then" commit mutation "setAuthUser" and set it to a null
+4. you can return also "true" in case of success
+5. In case of error return Promise.reject with error
+6. create logout function in Navbar component
+7. dispatch logout action when clicking logout button
+8. in case of success dispatch, navigate user to login page

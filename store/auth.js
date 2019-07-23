@@ -27,6 +27,14 @@ export const actions = {
       })
       .catch(error => Promise.reject(error))
   },
+  logout({commit}) {
+    return this.$axios.$post('/api/v1/users/logout')
+      .then(() => {
+        commit('setAuthUser', null)
+        return true
+      })
+      .catch(error => Promise.reject(error))
+  },
   getAuthUser({commit, getters, state}) {
     const authUser = getters.authUser
 
