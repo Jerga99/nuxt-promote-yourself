@@ -26,6 +26,21 @@ export const actions = {
         return state.user
       })
       .catch(error => Promise.reject(error))
+  },
+  getAuthUser({commit, getters, state}) {
+    const authUser = getters.authUser
+
+    if (authUser) { return Promise.resolve(authUser) }
+
+    return this.$axios.$get('/api/v1/users/me')
+      .then((user) => {
+        commit('setAuthUser', user)
+        return state.user
+      })
+      .catch((error) => {
+        commit('setAuthUser', null)
+        return Promise.reject(error)
+      })
   }
 }
 
@@ -34,3 +49,13 @@ export const mutations = {
     state.user = user
   }
 }
+
+
+
+
+
+
+
+
+
+
