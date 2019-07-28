@@ -11,8 +11,53 @@
       </div>
       <div class="course-create full-page-takeover-container">
         <div class="container">
-          <CourseCreateStep1 />
-          <CourseCreateStep2 />
+          <!-- STEP 1 of FORM  -->
+          <div class="course-create-wrapper">
+            <div class="course-create-headerText">
+              Please choose title of your Course.
+            </div>
+            <h2 class="course-create-subtitle">
+              No worries, you can change title later.
+            </h2>
+            <form @input="emitFormData" class="course-create-form">
+              <div class="course-create-form-group">
+                <div class="field course-create-form-field control has-icons-right">
+                  <input
+                    :maxLength="50"
+                    type="text"
+                    placeholder="e.g. Amazing Course in Flutter!"
+                    class="input is-large">
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- STEP 1 END-->
+          <!-- STEP 2 of FORM -->
+          <div class="course-create-wrapper">
+            <div class="course-create-headerText">
+              What category best fits the knowledge you'll share?
+            </div>
+            <h2 class="course-create-subtitle">If you're not sure about the right category, you can change it later.</h2>
+            <form class="course-create-form">
+              <div class="course-create-form-group">
+                <div class="course-create-form-field">
+                  <div class="select is-large">
+                    <select>
+                      <option value="default">Select Category</option>
+                      <option>
+                        Mobile Development
+                      </option>
+                      <option>
+                        Web Development
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- STEP 2 END -->
+
         </div>
         <div class="full-page-footer-row">
           <div class="container">
@@ -46,15 +91,9 @@
 
 <script>
 import Header from '~/components/shared/Header'
-import CourseCreateStep1 from '~/components/instructor/CourseCreateStep1'
-import CourseCreateStep2 from '~/components/instructor/CourseCreateStep2'
 export default {
   layout: 'instructor',
-  components: {
-    Header,
-    CourseCreateStep1,
-    CourseCreateStep2
-  },
+  components: {Header},
 }
 </script>
 
