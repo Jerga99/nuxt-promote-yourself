@@ -65,6 +65,14 @@ export default {
   layout: 'instructor',
   components: {
     InstructorHeader
+  },
+  computed: {
+    courses() {
+      return this.$store.state.instructor.course.items
+    }
+  },
+  fetch({store}) {
+    return store.dispatch('instructor/course/fetchInstructorCourses')
   }
 }
 </script>
