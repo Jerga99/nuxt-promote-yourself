@@ -4,7 +4,7 @@
       <template #actionMenu>
         <div class="full-page-takeover-header-button">
           <nuxt-link
-            to="#"
+            to="/instructor/course/create"
             class="button is-medium is-light">
             New Course
           </nuxt-link>

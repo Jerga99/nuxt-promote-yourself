@@ -3,7 +3,7 @@
     <div class="full-page-takeover-page">
       <Header
         :title="`Step 1 of 2`"
-        exitLink="#" />
+        exitLink="/instructor/courses" />
       <div class="full-page-takeover-header-bottom-progress">
         <div :style="{width: '50%'}"
              class="full-page-takeover-header-bottom-progress-highlight">
@@ -11,14 +11,14 @@
       </div>
       <div class="course-create full-page-takeover-container">
         <div class="container">
-          <CourseCreateStep1 />
-          <CourseCreateStep2 />
+          <CourseCreateStep1 v-if="activeStep === 1" />
+          <CourseCreateStep2 v-if="activeStep === 2" />
         </div>
         <div class="full-page-footer-row">
           <div class="container">
             <div class="full-page-footer-col">
               <div>
-                <a @click.prevent="() => {}" class="button is-large">Previous</a>
+                <a @click.prevent="previousStep" class="button is-large">Previous</a>
               </div>
               <!-- <div v-else class="empty-container">
               </div> -->
@@ -26,7 +26,7 @@
             <div class="full-page-footer-col">
               <div>
                 <button
-                  @click.prevent="() => {}"
+                  @click.prevent="nextStep"
                   class="button is-large float-right">
                   Continue
                 </button>
@@ -55,6 +55,19 @@ export default {
     CourseCreateStep1,
     CourseCreateStep2
   },
+  data() {
+    return {
+      activeStep: 1
+    }
+  },
+  methods: {
+    nextStep() {
+      this.activeStep++
+    },
+    previousStep() {
+      this.activeStep--
+    }
+  }
 }
 </script>
 
