@@ -5,7 +5,7 @@
         :title="`Step 1 of 2`"
         exitLink="/instructor/courses" />
       <div class="full-page-takeover-header-bottom-progress">
-        <div :style="{width: '50%'}"
+        <div :style="{width: progress}"
              class="full-page-takeover-header-bottom-progress-highlight">
         </div>
       </div>
@@ -17,24 +17,29 @@
         <div class="full-page-footer-row">
           <div class="container">
             <div class="full-page-footer-col">
-              <div>
-                <a @click.prevent="previousStep" class="button is-large">Previous</a>
+              <div v-if="!isFirstStep">
+                <a
+                  @click.prevent="previousStep"
+                  class="button is-large">Previous
+                </a>
               </div>
-              <!-- <div v-else class="empty-container">
-              </div> -->
+              <div v-else class="empty-container">
+              </div>
             </div>
             <div class="full-page-footer-col">
               <div>
                 <button
+                  v-if="!isLastStep"
                   @click.prevent="nextStep"
                   class="button is-large float-right">
                   Continue
                 </button>
-                <!-- <button
+                <button
+                  v-else
                   @click="() => {}"
                   class="button is-success is-large float-right">
                   Confirm
-                </button> -->
+                </button>
               </div>
             </div>
           </div>
@@ -57,7 +62,22 @@ export default {
   },
   data() {
     return {
-      activeStep: 1
+      activeStep: 1,
+      steps: ['CourseCreateStep1', 'CourseCreateStep2']
+    }
+  },
+  computed: {
+    stepsLength() {
+      return this.steps.length
+    },
+    isLastStep() {
+      return this.activeStep === this.stepsLength
+    },
+    isFirstStep() {
+      return this.activeStep === 1
+    },
+    progress() {
+      return `${100 / this.stepsLength * this.activeStep}%`
     }
   },
   methods: {
