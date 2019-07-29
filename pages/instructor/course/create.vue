@@ -14,6 +14,7 @@
         <keep-alive>
           <component
             :is="activeComponent"
+            @stepUpdated="mergeFormData"
           />
         </keep-alive>
         </div>
@@ -68,7 +69,11 @@ export default {
     return {
       activeStep: 1,
       steps: ['CourseCreateStep1', 'CourseCreateStep2'],
-      canProceed: false
+      canProceed: false,
+      form: {
+        title: '',
+        category: ''
+      }
     }
   },
   computed: {
@@ -94,6 +99,10 @@ export default {
     },
     previousStep() {
       this.activeStep--
+    },
+    mergeFormData({data, isValid}) {
+      this.form = {...this.form, ...data}
+      this.canProceed = isValid
     }
   }
 }
