@@ -53,7 +53,6 @@ GOOD LUCK (:
 6. verify your functionality by debugging or Vue extension
 
 
-
 1. Separate create form into 2 components - CourseCreateStep1, CourseCreateStep2
 2. Provide component to create form
 
@@ -63,7 +62,10 @@ GOOD LUCK (:
 Note: don't forget :key,
 
 
-
+1. Create action "createCourse" in instructor/course.js and expect to receive form data
+2. send a POST request to '/api/v1/products' with courseData
+3. In instructor create page dispatch "createCourse" with form data after user will click on "Confirm" button
+4. in "then" block redirect user to "/instructor/courses" page
 
 
 
