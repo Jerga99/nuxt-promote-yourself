@@ -8,11 +8,14 @@
       <div class="course-create-form-group">
         <div class="course-create-form-field">
           <div class="select is-large">
-            <select @change="emitFormData">
+            <select
+              v-model="form.category"
+              @change="emitFormData">
               <option value="default">Select Category</option>
               <option
                 v-for="category in categories"
-                :key="category._id">
+                :key="category._id"
+                :value="category._id">
                 {{category.name}}
               </option>
             </select>
@@ -28,7 +31,7 @@ export default {
   data() {
     return {
       form: {
-        category: ''
+        category: 'default'
       }
     }
   },
@@ -41,7 +44,7 @@ export default {
   },
   computed: {
     isValid() {
-      return !this.$v.$invalid
+      return !this.$v.$invalid && this.form.category !== 'default'
     },
     categories() {
       return this.$store.state.category.items
@@ -49,7 +52,6 @@ export default {
   },
   methods: {
     emitFormData() {
-      debugger
       this.$emit('stepUpdated', {data: this.form, isValid: this.isValid})
     }
   }

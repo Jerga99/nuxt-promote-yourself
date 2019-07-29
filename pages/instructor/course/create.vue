@@ -41,6 +41,7 @@
                 </button>
                 <button
                   v-else
+                  :disabled="!canProceed"
                   @click="() => {}"
                   class="button is-success is-large float-right">
                   Confirm
@@ -99,6 +100,7 @@ export default {
   methods: {
     nextStep() {
       this.activeStep++
+      this.canProceed = false;
     },
     previousStep() {
       this.activeStep--
