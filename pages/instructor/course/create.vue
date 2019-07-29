@@ -14,6 +14,7 @@
         <keep-alive>
           <component
             :is="activeComponent"
+            ref="activeComponent"
             @stepUpdated="mergeFormData"
           />
         </keep-alive>
@@ -100,10 +101,11 @@ export default {
   methods: {
     nextStep() {
       this.activeStep++
-      this.canProceed = false;
+      this.$nextTick(() => this.canProceed = this.$refs.activeComponent.isValid)
     },
     previousStep() {
       this.activeStep--
+      this.canProceed = true
     },
     mergeFormData({data, isValid}) {
       this.form = {...this.form, ...data}
