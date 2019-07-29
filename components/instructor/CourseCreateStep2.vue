@@ -10,6 +10,7 @@
           <div class="select is-large">
             <select
               v-model="form.category"
+              @blur="$v.form.category.$touch()"
               @change="emitFormData">
               <option value="default">Select Category</option>
               <option
@@ -19,6 +20,11 @@
                 {{category.name}}
               </option>
             </select>
+          </div>
+          <!-- TODO: -->
+          <!-- Consider to create custom validator to check if category is provided and has value of "default" -->
+          <div v-if="$v.form.category.$dirty && !isValid" class="form-error">
+            <span class="help is-danger">Category is required!</span>
           </div>
         </div>
       </div>
@@ -52,12 +58,17 @@ export default {
   },
   methods: {
     emitFormData() {
+      this.$v.form.$touch()
       this.$emit('stepUpdated', {data: this.form, isValid: this.isValid})
     }
   }
 }
 </script>
-
+<style scoped>
+  .help.is-danger {
+    text-align: left;
+  }
+</style>
 
 
 
