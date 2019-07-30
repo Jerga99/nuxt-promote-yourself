@@ -28,7 +28,7 @@
               class="tile is-ancestor">
               <div class="tile is-parent is-12">
                 <!-- Navigate to course manage page -->
-                <nuxt-link :to="'#'" class="tile tile-overlay-container is-child box">
+                <nuxt-link :to="`/instructor/course/${course._id}/manage`" class="tile tile-overlay-container is-child box">
                   <div class="tile-overlay">
                     <span class="tile-overlay-text">
                       Update Course

@@ -1,0 +1,279 @@
+<template>
+  <div>
+    <Header
+      title="Some very nice course name"
+      exitLink="/instructor/courses">
+      <template #actionMenu>
+        <div class="full-page-takeover-header-button">
+          <button
+            @click="() => {}"
+            class="button is-primary is-inverted is-medium is-outlined">
+            Save
+          </button>
+        </div>
+      </template>
+    </Header>
+    <div class="course-manage">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-3 p-lg">
+            <!-- <aside class="menu is-hidden-mobile"> -->
+            <aside class="menu">
+              <p class="menu-label">
+                Course Editing
+              </p>
+              <ul class="menu-list">
+                <li>
+                  <!-- display TargetStudents -->
+                  <a @click.prevent="() => {}"
+                     :class="'active'">Target Your Students
+                  </a>
+                </li>
+                <li>
+                  <!-- display LandingPage -->
+                  <a @click.prevent="() => {}">
+                    Course Landing Page
+                  </a>
+                </li>
+              </ul>
+              <p class="menu-label">
+                Course Managment
+              </p>
+              <ul class="menu-list">
+                <li>
+                  <!-- display Price -->
+                  <a @click.prevent="() => {}">
+                    Price
+                  </a>
+                </li>
+                <li>
+                  <!-- display Status -->
+                  <a @click.prevent="() => {}">
+                    Status
+                  </a>
+                </li>
+              </ul>
+            </aside>
+          </div>
+          <div class="column">
+            <!-- TargetStudents -->
+            <div class="card manage-card">
+              <header class="card-header card-section">
+                <p class="card-header-title">Target your Students</p>
+              </header>
+              <div class="card-content card-section">
+                <form>
+                  <div class="field">
+                    <div class="control">
+                      <input
+                        class="input is-large"
+                        type="text"
+                        placeholder="What will students learn in your course ?"
+                        >
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input
+                        class="input is-large"
+                        type="text"
+                        placeholder="What are the requirements for the course ?"
+                        >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- TargetStudents End -->
+            <!-- LandingPage -->
+            <div class="card manage-card">
+              <header class="card-header card-section">
+                <p class="card-header-title">Course Landing Page</p>
+              </header>
+              <div class="card-content card-section">
+                <form>
+                  <div class="field">
+                    <label class="label">Course title</label>
+                    <div class="control">
+                      <input
+                        class="input is-medium"
+                        type="text"
+                        placeholder="Dart and Flutter From Zero to Hero ">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Course subtitle</label>
+                    <div class="control">
+                      <input
+                        class="input is-medium"
+                        type="text"
+                        placeholder="Build real mobile Application for Android and iOS.">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Course description</label>
+                    <div class="control">
+                      <textarea
+                        class="textarea is-medium"
+                        type="text"
+                        placeholder="Write something catchy about the course">
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Category</label>
+                    <div class="select is-medium">
+                      <select>
+                        <option value="default">Select Category</option>
+                        <!-- <option> </option> -->
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Course Image</label>
+                    <div class="columns">
+                      <div class="column">
+                        <figure class="image is-4by2">
+                          <img
+                            :src="''">
+                        </figure>
+                      </div>
+                      <div class="column centered">
+                        <div class="control">
+                          <input
+                            class="input is-medium"
+                            type="text"
+                            placeholder="https://images.unsplash.com/photo-1498837167922-ddd27525d352">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Course Link</label>
+                    <div class="control">
+                      <input
+                        class="input is-medium"
+                        type="text"
+                        placeholder="https://www.udemy.com/vue-js-2-the-full-guide-by-real-apps-vuex-router-node">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Course Video Link</label>
+                    <div class="control">
+                      <input
+                        class="input is-medium"
+                        type="text"
+                        placeholder="https://www.youtube.com/watch?v=WQ9sCAhRh1M">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- LandingPage End -->
+            <!-- Price -->
+            <div class="card manage-card">
+              <header class="card-header card-section">
+                <p class="card-header-title">Pricing</p>
+              </header>
+              <div class="card-content card-section">
+                <div class="field">
+                  <label class="label">Price of the course</label>
+                  <div class="control">
+                    <input
+                      class="input is-medium"
+                      type="text"
+                      placeholder="179.99">
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Discounted Price for the course</label>
+                  <div class="control">
+                    <input
+                      class="input is-medium"
+                      type="text"
+                      placeholder="9.99">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Price End -->
+            <!-- Status -->
+            <div class="card manage-card">
+              <header class="card-header card-section">
+                <p class="card-header-title">Status</p>
+              </header>
+              <div class="card-content card-section">
+                <div class="field">
+                  <label class="label">Status</label>
+                  <div class="select is-medium">
+                    <select>
+                      <option value="default">Change Status</option>
+                      <option value="active">
+                        Active
+                      </option>
+                      <option value="published">
+                        Published
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Status End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Header from '~/components/shared/Header'
+export default {
+  layout: 'instructor',
+  components: { Header }
+}
+</script>
+
+<style scoped lang="scss">
+  .label-info {
+    font-size: 13px;
+    color: gray;
+    font-style: italic;
+  }
+  .course-manage {
+    padding-top: 40px;
+    .menu {
+      padding-top: 30px;
+      &-label {
+        font-size: 20px;
+        color: black;
+      }
+      &-list {
+        >li {
+          font-size: 18px;
+          margin-top: 10px;
+          > a {
+            &.is-active {
+              background-color: transparent;
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+    .card {
+      &-section {
+        padding: 40px;
+      }
+      &-header {
+        &-title {
+          padding: 0;
+          color: #8F99A3;
+          font-weight: 400;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+</style>
