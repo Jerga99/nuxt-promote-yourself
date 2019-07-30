@@ -73,7 +73,15 @@ Note: Implement: "activeStep", and "steps" and method to display component depen
 
 
 
-
+1. create "fetchCourseById" action in instructor/course.js
+2. send a GET request to '/api/v1/products/:id' and expect to receive course id in arguments of this action
+   ":id" is dynamic part, you need to provide id of the course
+3. in "then" block expect to receive "course"
+4. commit mutation "setCourse"
+5. in mutation assign to state.item received course
+6. in manage.vue dispatch "fetchCourseById" in "fetch". Don't forget to provide course id to this dispatch call. You can get course id from "params"
+7. in computed of manage.vue "mapState" and get course from store
+8. verify you are getting your course in "Vue" extenstion
 
 
 

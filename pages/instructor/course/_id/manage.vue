@@ -80,6 +80,7 @@ import TargetStudents from '~/components/instructor/TargetStudents'
 import Price from '~/components/instructor/Price'
 import Status from '~/components/instructor/Status'
 import MultiComponentMixin from '~/mixins/MultiComponentMixin'
+import { mapState } from 'vuex'
 export default {
   layout: 'instructor',
   components: {
@@ -94,6 +95,14 @@ export default {
     return {
       steps: ['TargetStudents', 'LandingPage', 'Price', 'Status']
     }
+  },
+  fetch({store, params}) {
+    return store.dispatch('instructor/course/fetchCourseById', params.id)
+  },
+  computed: {
+    ...mapState({
+      course: ({instructor}) => instructor.course.item
+    })
   }
 }
 </script>
