@@ -64,7 +64,9 @@
           <div class="column">
             <keep-alive>
               <component
-                :is="activeComponent"/>
+                :is="activeComponent"
+                :course="course"
+              />
             </keep-alive>
           </div>
         </div>
