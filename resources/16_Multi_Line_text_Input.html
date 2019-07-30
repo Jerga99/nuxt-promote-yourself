@@ -1,0 +1,57 @@
+<template>
+  <div>
+    <!-- Send a label through props -->
+    <label class="label">Some Label</label>
+    <!-- Iterate lines here -->
+    <div class="multi-field field">
+      <div class="control multi-control">
+        <div class="multi-input-container">
+          <input
+            class="input is-medium multi-input"
+            type="text"
+            :placeholder="'Add Something Nice (:'">
+        </div>
+        <div class="btn-container">
+          <!-- Delete the line -->
+          <button
+            @click.prevent="() => {}"
+            type="button"
+            class="button is-danger multi-button">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Add the Line -->
+    <button
+      @click="() => {}"
+      type="button"
+      class="m-b-sm button is-medium is-link is-outlined">
+      Add an answer
+    </button>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.multi-input {
+  float: left;
+  width: 100%;
+}
+.multi-button {
+  height: inherit;
+}
+.multi-input-container {
+  display: flex;
+  flex: 1;
+}
+.btn-container {
+  display: flex;
+  opacity: 0;
+}
+.multi-control {
+  display: flex;
+  &:hover > .btn-container {
+    opacity: 1;
+  }
+}
+</style>
