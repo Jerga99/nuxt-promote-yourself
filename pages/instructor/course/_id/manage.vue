@@ -26,12 +26,14 @@
                 <li>
                   <!-- display TargetStudents -->
                   <a @click.prevent="navigateTo(1)"
-                     :class="'active'">Target Your Students
+                     :class="activeComponentClass(1)">Target Your Students
                   </a>
                 </li>
                 <li>
                   <!-- display LandingPage -->
-                  <a @click.prevent="navigateTo(2)">
+                  <a
+                    @click.prevent="navigateTo(2)"
+                    :class="activeComponentClass(2)">
                     Course Landing Page
                   </a>
                 </li>
@@ -42,13 +44,17 @@
               <ul class="menu-list">
                 <li>
                   <!-- display Price -->
-                  <a @click.prevent="navigateTo(3)">
+                  <a
+                    @click.prevent="navigateTo(3)"
+                    :class="activeComponentClass(3)">
                     Price
                   </a>
                 </li>
                 <li>
                   <!-- display Status -->
-                  <a @click.prevent="navigateTo(4)">
+                  <a
+                    @click.prevent="navigateTo(4)"
+                    :class="activeComponentClass(4)">
                     Status
                   </a>
                 </li>
@@ -96,6 +102,9 @@ export default {
   methods: {
     navigateTo(step) {
       this.activeStep = step
+    },
+    activeComponentClass(step) {
+      return this.activeStep === step ? 'is-active' : ''
     }
   }
 }
@@ -122,6 +131,7 @@ export default {
             margin-top: 10px;
             > a {
               &.is-active {
+                border-left: 3px solid #58529f;
                 background-color: transparent;
                 color: inherit;
               }
