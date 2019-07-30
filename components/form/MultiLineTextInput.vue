@@ -18,7 +18,7 @@
         <div class="btn-container">
           <!-- Delete the line -->
           <button
-            @click.prevent="() => {}"
+            @click.prevent="emitRemove(index)"
             type="button"
             class="button is-danger multi-button">
             Delete
@@ -28,7 +28,7 @@
     </div>
     <!-- Add the Line -->
     <button
-      @click="() => {}"
+      @click="emitAdd"
       type="button"
       class="m-b-sm button is-medium is-link is-outlined">
       Add an answer
@@ -46,6 +46,14 @@ export default {
     lines: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    emitAdd() {
+      this.$emit('addClicked')
+    },
+    emitRemove(index) {
+      this.$emit('removeClicked', index)
     }
   }
 }
