@@ -6,8 +6,7 @@
     />
     <div class="blog-editor-container">
       <div class="container">
-        Editor
-        <!-- Editor Component here! -->
+        <editor />
       </div>
     </div>
   </div>
@@ -15,10 +14,11 @@
 
 <script>
 import Header from '~/components/shared/Header'
+import Editor from '~/components/editor'
 export default {
   layout: 'instructor',
   components: {
-    Header
+    Header, Editor
   }
 }
 </script>
