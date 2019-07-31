@@ -8,6 +8,8 @@
         <label class="label">Price of the course</label>
         <div class="control">
           <input
+            :value="course.price"
+            @input="($event) => emitCourseValue($event, 'price')"
             class="input is-medium"
             type="text"
             placeholder="179.99">
@@ -17,6 +19,8 @@
         <label class="label">Discounted Price for the course</label>
         <div class="control">
           <input
+            :value="course.discountedPrice"
+            @input="($event) => emitCourseValue($event, 'discountedPrice')"
             class="input is-medium"
             type="text"
             placeholder="9.99">
@@ -25,3 +29,27 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    course: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    emitCourseValue(e, field) {
+      this.$emit('courseValueUpdated', {value: e.target.value, field})
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
