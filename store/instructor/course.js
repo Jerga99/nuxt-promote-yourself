@@ -26,6 +26,15 @@ export const actions = {
   createCourse(_, courseData) {
     return this.$axios.$post('/api/v1/products', courseData)
   },
+  updateCourse({state, commit}) {
+    const course = state.item
+    return this.$axios.$patch(`/api/v1/products/${course._id}`, course)
+      .then(course => {
+        commit('setCourse', course)
+        return state.item
+      })
+      .catch(error => Promise.reject(error))
+  },
   updateLine({commit}, {index, value, field}) {
     commit('setLineValue', {index, value, field})
     // Surprise commit for next lectures (:

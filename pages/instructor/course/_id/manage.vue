@@ -6,7 +6,7 @@
       <template #actionMenu>
         <div class="full-page-takeover-header-button">
           <button
-            @click="() => {}"
+            @click="updateCourse"
             class="button is-primary is-inverted is-medium is-outlined">
             Save
           </button>
@@ -109,6 +109,11 @@ export default {
     })
   },
   methods: {
+    updateCourse() {
+      this.$store.dispatch('instructor/course/updateCourse')
+        .then(_ => this.$toasted.success('Course has been succefuly updated!', {duration: 3000}))
+        .catch(error => this.$toasted.error('Course cannot be updated!'), {duration: 3000})
+    },
     handleCourseUpdate({value, field}) {
       this.$store.dispatch('instructor/course/updateCourseValue', {field, value})
     }

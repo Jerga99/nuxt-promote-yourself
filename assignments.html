@@ -85,3 +85,15 @@ Note: Implement: "activeStep", and "steps" and method to display component depen
 
 
 
+1. in instructor/course.js create action "updateCourse"
+2. send a PATCH request to '/api/v1/products/:id' and don't forget to send a course data
+NOTE: you can get course data from "state.item" in action
+3. in "then" block receive "course" and call mutation "setCourse"
+4. in "catch" block reject promise
+5. dispatch this action in manage page when clicking on "save" button
+6. on success display $toasted  success message with your custom text
+7. in case of an error display $toasted message with an error
+8. Test your functionality. Update some data of the course , click save and refresh page. See if data were perssisted.
+
+
+
