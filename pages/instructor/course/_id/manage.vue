@@ -99,8 +99,9 @@ export default {
       steps: ['TargetStudents', 'LandingPage', 'Price', 'Status']
     }
   },
-  fetch({store, params}) {
-    return store.dispatch('instructor/course/fetchCourseById', params.id)
+  async fetch({store, params}) {
+    await store.dispatch('instructor/course/fetchCourseById', params.id)
+    await store.dispatch('category/fetchCategories')
   },
   computed: {
     ...mapState({
