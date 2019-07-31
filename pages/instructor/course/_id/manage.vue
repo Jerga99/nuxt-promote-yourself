@@ -7,6 +7,7 @@
         <div class="full-page-takeover-header-button">
           <button
             @click="updateCourse"
+            :disabled="!canUpdateCourse"
             class="button is-primary is-inverted is-medium is-outlined">
             Save
           </button>
@@ -105,7 +106,8 @@ export default {
   },
   computed: {
     ...mapState({
-      course: ({instructor}) => instructor.course.item
+      course: ({instructor}) => instructor.course.item,
+      canUpdateCourse: ({instructor}) => instructor.course.canUpdateCourse
     })
   },
   methods: {

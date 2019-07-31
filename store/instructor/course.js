@@ -3,7 +3,8 @@
 
 export const state = () => ({
   items: [],
-  item: {}
+  item: {},
+  canUpdateCourse: false
 })
 
 
@@ -31,17 +32,20 @@ export const actions = {
     return this.$axios.$patch(`/api/v1/products/${course._id}`, course)
       .then(course => {
         commit('setCourse', course)
+        commit('setCanUpdateCourse', false)
         return state.item
       })
       .catch(error => Promise.reject(error))
   },
+  // TODO: cache previous value and verify if you can update course
+  // TODO: set canUpdate only when course values has beed updated
   updateLine({commit}, {index, value, field}) {
     commit('setLineValue', {index, value, field})
-    // Surprise commit for next lectures (:
+    commit('setCanUpdateCourse', true)
   },
   updateCourseValue({commit}, {value, field}) {
     commit('setCourseValue', {value, field})
-    // Surprise commit for next lectures (:
+    commit('setCanUpdateCourse', true)
   }
 }
 
@@ -54,6 +58,9 @@ export const mutations = {
   },
   setCourseValue(state, {value, field}) {
     state.item[field] = value
+  },
+  setCanUpdateCourse(state, canUpdate) {
+    state.canUpdateCourse = canUpdate
   },
   addLine(state, field) {
     state.item[field].push({value: ''})

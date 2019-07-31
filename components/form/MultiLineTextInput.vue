@@ -70,7 +70,9 @@ export default {
   },
   methods: {
     emitAdd() {
-      this.canAddLine && this.$emit('addClicked')
+      if (this.canAddLine || this.lines.length === 0) {
+        this.$emit('addClicked')
+      }
     },
     emitRemove(index) {
       this.canDeleteLine && this.$emit('removeClicked', index)
