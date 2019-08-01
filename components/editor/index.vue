@@ -11,7 +11,16 @@
 <script>
 import { Editor, EditorContent } from 'tiptap'
 import BubbleMenu from '~/components/editor/BubbleMenu'
-import { Heading } from 'tiptap-extensions'
+import {
+  Heading,
+  Bold,
+  Code,
+  Italic,
+  Strike,
+  Underline,
+  History
+
+} from 'tiptap-extensions'
 export default {
   components: {
     EditorContent,
@@ -26,7 +35,13 @@ export default {
   mounted() {
     this.editor = new Editor({
       extensions: [
-        new Heading({ levels: [1, 2, 3]})
+        new Heading({ levels: [1, 2, 3]}),
+        new Bold(),
+        new Code(),
+        new Italic(),
+        new Strike(),
+        new Underline(),
+        new History()
       ]
     })
   },
