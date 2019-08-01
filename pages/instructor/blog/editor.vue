@@ -21,13 +21,21 @@ export default {
     Header, Editor
   },
   methods: {
-    saveBlog({content, title, subtitle}) {
+    saveBlog(blogData) {
+      this.$store.dispatch('instructor/blog/createBlog', blogData)
+        .then(blog => this.$router.push(`/instructor/blog/${blog._id}/edit`))
     }
   }
 }
 </script>
 <style lang="scss">
-  .blog-editor-container {
-    padding-top: 60px;
-  }
+
 </style>
+
+
+
+
+
+
+
+
