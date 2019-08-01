@@ -66,6 +66,13 @@
       >
         H3
       </button>
+      <button
+        class="menububble__button"
+        :class="{ 'is-active': isActive.paragraph() }"
+        @click="commands.paragraph()"
+      >
+        <icon name="paragraph" size="small" />
+      </button>
     </div>
   </editor-menu-bubble>
 </template>
