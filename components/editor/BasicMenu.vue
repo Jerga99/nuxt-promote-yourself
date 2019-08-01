@@ -42,9 +42,7 @@
         @click="commands.redo">
         <icon name="redo" size="large" />
       </button>
-      <button class="button is-success button-save">
-        Save
-      </button>
+      <slot name="saveButton"></slot>
     </div>
   </editor-menu-bar>
 </template>

@@ -6,7 +6,7 @@
     />
     <div class="blog-editor-container">
       <div class="container">
-        <editor />
+        <editor @editorUpdated="saveBlog"/>
       </div>
     </div>
   </div>
@@ -19,6 +19,10 @@ export default {
   layout: 'instructor',
   components: {
     Header, Editor
+  },
+  methods: {
+    saveBlog({content, title, subtitle}) {
+    }
   }
 }
 </script>
