@@ -7,15 +7,15 @@
       <!-- TODO: Check if blog status is active -->
       <template #actionMenu>
         <div class="full-page-takeover-header-button">
-          <!-- TODO: Check blog validity before publishing -->
           <Modal
+            @opened="checkBlogValidity"
             openTitle="Publish"
             openBtnClass="button is-success is-medium is-inverted is-outlined"
             title="Review Details">
             <div>
               <div class="title">Once you publish blog you cannot change url to a blog.</div>
               <!-- Check for error -->
-              <div>
+              <div v-if="!publishError">
                 <div class="subtitle">Current Url is:</div>
                 <article class="message is-success">
                   <div class="message-body">
@@ -24,11 +24,11 @@
                   </div>
                 </article>
               </div>
-              <!-- <article class="message is-danger">
+              <article v-else class="message is-danger">
                 <div class="message-body">
-                  Display error here
+                  {{publishError}}
                 </div>
-              </article> -->
+              </article>
             </div>
           </Modal>
         </div>
@@ -52,6 +52,7 @@
           @editorMounted="initBlogContent"
           @editorUpdated="updateBlog"
           :isSaving="isSaving"
+          ref="editor"
         />
       </div>
     </div>
@@ -67,6 +68,11 @@ export default {
   layout: 'instructor',
   components: {
     Editor, Header, Modal
+  },
+  data() {
+    return {
+      publishError: ''
+    }
   },
   computed: {
     ...mapState({
@@ -89,6 +95,16 @@ export default {
         this.$store.dispatch('instructor/blog/updateBlog', {data: blogData, id: this.blog._id})
         .then(_ => this.$toasted.success('Blog Updated!', {duration: 2000}))
         .catch(error => this.$toasted.error('Blog cannot be saved!', {duration: 2000}))
+      }
+    },
+    checkBlogValidity() {
+      const title = this.$refs.editor.getNodeValueByName('title')
+      this.publishError = ''
+
+      if (title && title.length > 24) {
+        // create slug from title
+      } else {
+        this.publishError = 'Cannot publish! Title needs to be longer than 24 characters!'
       }
     }
   }
