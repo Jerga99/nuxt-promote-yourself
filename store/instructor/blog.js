@@ -1,7 +1,8 @@
 
 
 export const state = () => ({
-  item: {}
+  item: {},
+  isSaving: false
 })
 
 export const actions = {
@@ -15,17 +16,31 @@ export const actions = {
       .then(blog => commit('setBlog', blog))
   },
   updateBlog({commit, state}, {data, id}) {
+    commit('setIsSaving', true)
     return this.$axios.$patch(`/api/v1/blogs/${id}`, data)
       .then(blog => {
         commit('setBlog', blog)
+        commit('setIsSaving', false)
         return state.item
       })
-      .catch(error => Promise.reject(error))
+      .catch(error => {
+        commit('setIsSaving', false)
+        return Promise.reject(error)
+      })
   }
 }
 
 export const mutations = {
   setBlog(state, blog) {
     state.item = blog
+  },
+  setIsSaving(state, isSaving) {
+    state.isSaving = isSaving
   }
 }
+
+
+
+
+
+
