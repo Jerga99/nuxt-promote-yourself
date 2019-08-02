@@ -114,11 +114,14 @@ export default {
   },
   methods: {
     emitUpdate() {
+      const content = this.getContent()
+      this.$emit('editorUpdated', content)
+    },
+    getContent() {
       const html = this.editor.getHTML()
       const title = this.getNodeValueByName('title')
       const subtitle = this.getNodeValueByName('subtitle')
-
-      this.$emit('editorUpdated', {content: html, title, subtitle})
+      return {content: html, title, subtitle}
     },
     getNodeValueByName(name) {
       const docContent = this.editor.state.doc.content

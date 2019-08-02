@@ -8,6 +8,7 @@
       <template #actionMenu>
         <div class="full-page-takeover-header-button">
           <Modal
+            @submitted="publishBlog"
             @opened="checkBlogValidity"
             openTitle="Publish"
             openBtnClass="button is-success is-medium is-inverted is-outlined"
@@ -80,7 +81,10 @@ export default {
     ...mapState({
       blog: ({instructor}) => instructor.blog.item,
       isSaving: ({instructor}) => instructor.blog.isSaving
-    })
+    }),
+    editor() {
+      return this.$refs.editor
+    }
   },
   async fetch({params, store}) {
     await store.dispatch('instructor/blog/fetchBlogById', params.id)
@@ -99,8 +103,12 @@ export default {
         .catch(error => this.$toasted.error('Blog cannot be saved!', {duration: 2000}))
       }
     },
+    publishBlog({closeModal}) {
+      const blogContent = this.editor.getContent()
+      debugger
+    },
     checkBlogValidity() {
-      const title = this.$refs.editor.getNodeValueByName('title')
+      const title = this.editor.getNodeValueByName('title')
       this.publishError = ''
       this.slug = ''
 
