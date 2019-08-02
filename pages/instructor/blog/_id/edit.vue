@@ -57,10 +57,36 @@
 import Editor from '~/components/editor'
 import Header from '~/components/shared/Header'
 import Modal from '~/components/shared/Modal'
+import { mapState } from 'vuex'
+
 export default {
   layout: 'instructor',
   components: {
     Editor, Header, Modal
+  },
+  computed: {
+    ...mapState({
+      blog: ({instructor}) => instructor.blog.item
+    })
+  },
+  async fetch({params, store}) {
+    await store.dispatch('instructor/blog/fetchBlogById', params.id)
   }
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

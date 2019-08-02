@@ -97,3 +97,16 @@ NOTE: you can get course data from "state.item" in action
 
 
 
+1. in instructor/blog.js create action "fetchBlogById"
+2. make a GET request to "/api/v1/blogs/:id"
+3. in "then" block expect to receive "blog", commit this "blog" to the state
+4. in /_id/edit.vue in "fetch" dispatch "fetchBlogById"
+5. Try this functionality. Create new blog. After you will be redirect to edit page verify you have blog in store
+
+
+
+
+
+
+
+
