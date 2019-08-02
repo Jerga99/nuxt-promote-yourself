@@ -48,7 +48,9 @@
     </Header>
     <div class="blog-editor-container">
       <div class="container">
-        <editor/>
+        <editor
+          @editorMounted="initBlogContent"
+        />
       </div>
     </div>
   </div>
@@ -71,6 +73,20 @@ export default {
   },
   async fetch({params, store}) {
     await store.dispatch('instructor/blog/fetchBlogById', params.id)
+  },
+  methods: {
+    // initBlogContent(editor) {
+    //   if (this.blog && this.blog.content) {
+    //     editor.setContent(this.blog.content)
+    //   }
+    // }
+    // TODO: fix color scheme of code block in editor!
+    initBlogContent(initContent) {
+      debugger
+      if (this.blog && this.blog.content) {
+        initContent(this.blog.content)
+      }
+    }
   }
 }
 </script>
