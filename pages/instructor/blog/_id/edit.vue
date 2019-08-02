@@ -50,6 +50,7 @@
       <div class="container">
         <editor
           @editorMounted="initBlogContent"
+          @editorUpdated="updateBlog"
         />
       </div>
     </div>
@@ -75,17 +76,16 @@ export default {
     await store.dispatch('instructor/blog/fetchBlogById', params.id)
   },
   methods: {
-    // initBlogContent(editor) {
-    //   if (this.blog && this.blog.content) {
-    //     editor.setContent(this.blog.content)
-    //   }
-    // }
     // TODO: fix color scheme of code block in editor!
     initBlogContent(initContent) {
-      debugger
       if (this.blog && this.blog.content) {
         initContent(this.blog.content)
       }
+    },
+    updateBlog(blogData) {
+      this.$store.dispatch('instructor/blog/updateBlog', {data: blogData, id: this.blog._id})
+        .then(_ => this.$toasted.success('Blog Updated!', {duration: 2000}))
+        .catch(error => this.$toasted.error('Blog cannot be saved!', {duration: 2000}))
     }
   }
 }

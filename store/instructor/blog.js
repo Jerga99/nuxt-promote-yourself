@@ -13,6 +13,14 @@ export const actions = {
   fetchBlogById({commit}, blogId) {
     return this.$axios.$get(`/api/v1/blogs/${blogId}`)
       .then(blog => commit('setBlog', blog))
+  },
+  updateBlog({commit, state}, {data, id}) {
+    return this.$axios.$patch(`/api/v1/blogs/${id}`, data)
+      .then(blog => {
+        commit('setBlog', blog)
+        return state.item
+      })
+      .catch(error => Promise.reject(error))
   }
 }
 
