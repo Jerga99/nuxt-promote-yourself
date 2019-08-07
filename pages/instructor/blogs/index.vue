@@ -56,7 +56,10 @@
 import Header from '~/components/shared/Header'
 export default {
   layout: 'instructor',
-  components: {Header}
+  components: {Header},
+  async fetch({store}) {
+    await store.dispatch('instructor/blog/fetchUserBlogs')
+  }
 }
 </script>
 
