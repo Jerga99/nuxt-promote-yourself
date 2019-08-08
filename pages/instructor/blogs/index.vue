@@ -42,7 +42,7 @@
                       Last Edited {{dBlog.updatedAt | formatDate('LLLL')}}
                     </span>
                     <dropdown
-                      @optionChanged="handleOption($event, dBlog._id)"
+                      @optionChanged="handleOption($event, dBlog)"
                       :items="draftsOptions" />
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                       Last Edited {{pBlog.updatedAt | formatDate('LLLL')}}
                     </span>
                     <dropdown
-                      @optionChanged="handleOption($event, pBlog._id)"
+                      @optionChanged="handleOption($event, pBlog)"
                       :items="publishedOptions" />
                   </div>
                 </div>
@@ -116,13 +116,21 @@ export default {
     await store.dispatch('instructor/blog/fetchUserBlogs')
   },
   methods: {
-    handleOption(command, blogId) {
+    handleOption(command, blog) {
       if (command === commands.EDIT_BLOG) {
-        this.$router.push(`/instructor/blog/${blogId}/edit`)
+        this.$router.push(`/instructor/blog/${blog._id}/edit`)
       }
 
       if (command === commands.DELETE_BLOG) {
-        alert('Deleting Blog')
+        this.displayDeleteWarning(blog)
+      }
+    },
+    displayDeleteWarning(blog) {
+     const isConfirm = confirm('Are you sure you want to delete blog ?')
+     if (isConfirm) {
+
+      this.$store.dispatch('instructor/blog/deleteBlog', blog)
+        .then(_ => this.$toasted.success('Blog was succesfuly deleted!', {duration: 2000}))
       }
     }
   }
