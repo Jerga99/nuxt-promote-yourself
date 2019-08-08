@@ -36,7 +36,7 @@
                   :key="dBlog._id"
                   class="blog-card"
                   >
-                  <h2>{{dBlog.title}}</h2>
+                  <h2>{{displayBlogTitle(dBlog)}}</h2>
                   <div class="blog-card-footer">
                     <span>
                       Last Edited {{dBlog.updatedAt | formatDate('LLLL')}}
@@ -62,7 +62,7 @@
                   :key="pBlog._id"
                   class="blog-card">
                   <!-- title -->
-                  <h2>{{pBlog.title}}</h2>
+                  <h2>{{displayBlogTitle(pBlog)}}</h2>
                   <div class="blog-card-footer">
                     <!-- updatedAt -->
                     <span>
@@ -132,6 +132,9 @@ export default {
       this.$store.dispatch('instructor/blog/deleteBlog', blog)
         .then(_ => this.$toasted.success('Blog was succesfuly deleted!', {duration: 2000}))
       }
+    },
+    displayBlogTitle(blog) {
+      return blog.title || blog.subtitle || 'Blog without title & subtitle :('
     }
   }
 }
