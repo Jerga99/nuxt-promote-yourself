@@ -41,7 +41,7 @@
                     <span>
                       Last Edited {{dBlog.updatedAt | formatDate('LLLL')}}
                     </span>
-                    <!-- Dropdown with menu here -->
+                    <dropdown :items="draftsOptions" />
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                     <span>
                       Last Edited {{pBlog.updatedAt | formatDate('LLLL')}}
                     </span>
-                    <!-- Dropdown with menu here -->
+                    <dropdown :items="publishedOptions" />
                   </div>
                 </div>
               </div>
@@ -83,13 +83,12 @@
 </template>
 <script>
 import Header from '~/components/shared/Header'
+import Dropdown from '~/components/shared/Dropdown'
 import { mapState } from 'vuex'
+import { createPublishedOptions, createDraftsOptions } from '~/pages/instructor/options'
 export default {
-  // data with activeTab by default it will be 0
-  // 0 represents drafts
-  // 1 represents published
   layout: 'instructor',
-  components: {Header},
+  components: {Header, Dropdown},
   data() {
     return {
       activeTab: 0
@@ -99,7 +98,13 @@ export default {
     ...mapState({
       published: ({instructor}) => instructor.blog.items.published,
       drafts: ({instructor}) => instructor.blog.items.drafts
-    })
+    }),
+    publishedOptions() {
+      return createPublishedOptions()
+    },
+    draftsOptions() {
+      return createDraftsOptions()
+    }
   },
   async fetch({store}) {
     await store.dispatch('instructor/blog/fetchUserBlogs')
