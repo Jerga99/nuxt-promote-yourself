@@ -11,17 +11,18 @@
           :date="blog.createdAt | formatDate"
          />
       </div>
-      <div class="blog-content" v-html="blog.content">
-      </div>
+      <editor-view :initialContent="blog.content" />
     </div>
   </div>
 </template>
 
 <script>
 import UserTile from '~/components/shared/UserTile'
+import EditorView from '~/components/editor/EditorView'
 export default {
   components: {
-    UserTile
+    UserTile,
+    EditorView
   },
   computed: {
     blog() {
