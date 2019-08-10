@@ -70,7 +70,7 @@
                     </span>
                     <dropdown
                       @optionChanged="handleOption($event, pBlog)"
-                      :items="publishedOptions" />
+                      :items="publishedOptions(pBlog.featured)" />
                   </div>
                 </div>
               </div>
@@ -105,9 +105,6 @@ export default {
       published: ({instructor}) => instructor.blog.items.published,
       drafts: ({instructor}) => instructor.blog.items.drafts
     }),
-    publishedOptions() {
-      return createPublishedOptions()
-    },
     draftsOptions() {
       return createDraftsOptions()
     }
@@ -124,6 +121,16 @@ export default {
       if (command === commands.DELETE_BLOG) {
         this.displayDeleteWarning(blog)
       }
+
+      if (command === commands.TOGGLE_FEATURE) {
+        this.updateBlog(blog)
+      }
+    },
+    updateBlog(blog) {
+      this.$store.dispatch('instructor/blog/updatePublishedBlog')
+    },
+    publishedOptions(isFeatured) {
+      return createPublishedOptions(isFeatured)
     },
     displayDeleteWarning(blog) {
      const isConfirm = confirm('Are you sure you want to delete blog ?')

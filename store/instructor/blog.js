@@ -53,6 +53,9 @@ export const actions = {
       })
       .catch(error => Promise.reject(error))
   },
+  updatePublishedBlog(blog) {
+    alert('FEATURING BLOG')
+  },
   updateBlog({commit, state}, {data, id}) {
     commit('setIsSaving', true)
     return this.$axios.$patch(`/api/v1/blogs/${id}`, data)
