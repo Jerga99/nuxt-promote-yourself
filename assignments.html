@@ -104,10 +104,22 @@ NOTE: you can get course data from "state.item" in action
 5. Try this functionality. Create new blog. After you will be redirect to edit page verify you have blog in store
 
 
-
 1. send a PATCH request to "/api/v1/blogs/${id}" with data of blog
 2. in "then" commit "setBlog"
 3. dispatch action in saveBlog
+
+
+1. create action "fetchBlogBySlug"
+2. dispatch this action in _slug.vue and provide slug from params
+3. in "fetchBlogBySlug" send GET request to '/api/v1/blogs/s/:slug'
+4. expect to receive "blog" and commit it to the state under "item"
+5. in slug page get blog in computed properties
+6. display blog content somewhere in template
+
+
+
+
+
 
 
 
