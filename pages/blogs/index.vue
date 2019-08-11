@@ -60,6 +60,7 @@ export default {
   },
   async fetch({store}) {
     await store.dispatch('blog/fetchBlogs')
+    await store.dispatch('blog/fetchFeaturedBlogs', {'filter[featured]': true})
   }
 }
 </script>
