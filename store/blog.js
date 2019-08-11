@@ -58,6 +58,9 @@ export const mutations = {
   setBlog(state, blog) {
     state.item = blog
   },
+  setPage(state, currentPage) {
+    Vue.set(state.pagination, 'pageNum', currentPage)
+  },
   setPagination(state, {count, pageCount}) {
     Vue.set(state.pagination, 'count', count)
     Vue.set(state.pagination, 'pageCount', pageCount)
