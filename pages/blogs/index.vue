@@ -92,8 +92,9 @@ export default {
       filter.pageSize = parseInt(pageSize, 10)
       store.commit('blog/setPage', filter.pageNum)
     } else {
-      filter.pageNum = 1
-      filter.pageSize = 6
+      // TODO: Maybe getters ?
+      filter.pageNum = store.state.blog.pagination.pageNum
+      filter.pageSize = store.state.blog.pagination.pageSize
     }
 
     await store.dispatch('blog/fetchBlogs', filter)
