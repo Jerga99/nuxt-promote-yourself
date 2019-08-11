@@ -22,7 +22,7 @@
             </div>
             <!-- end of blog -->
             <!-- pagination -->
-            <div class="section">
+            <div v-if="pagination.pageCount && pagination.pageCount > 1" class="section">
               <no-ssr placeholder="Loading...">
                 <paginate
                   v-model="currentPage"
@@ -82,16 +82,28 @@ export default {
       }
     }
   },
-  async fetch({store}) {
+  async fetch({store, query}) {
     // Try to get values from query
     const filter = {}
-    filter.pageNum = 1
-    filter.pageSize = 2
+    const {pageNum, pageSize} = query
+
+    if (pageNum && pageSize) {
+      filter.pageNum =  parseInt(pageNum, 10)
+      filter.pageSize = parseInt(pageSize, 10)
+      store.commit('blog/setPage', filter.pageNum)
+    } else {
+      filter.pageNum = 1
+      filter.pageSize = 6
+    }
 
     await store.dispatch('blog/fetchBlogs', filter)
     await store.dispatch('blog/fetchFeaturedBlogs', {'filter[featured]': true})
   },
   methods: {
+    setQueryPaginationParams() {
+      const { pageSize, pageNum } = this.pagination
+      this.$router.push({query: {pageNum, pageSize}})
+    },
     fetchBlogs() {
       const filter = {}
       filter.pageSize = this.pagination.pageSize
@@ -99,6 +111,7 @@ export default {
 
       // Here store the query params!
       this.$store.dispatch('blog/fetchBlogs', filter)
+        .then(_ => this.setQueryPaginationParams())
     }
   }
 }

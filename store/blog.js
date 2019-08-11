@@ -10,7 +10,7 @@ export const state = () => ({
   pagination: {
     count: 0, // Count of all of our published blogs
     pageCount: 0, // How many pages we want to display
-    pageSize: 2, // How many items we want to display per page
+    pageSize: 6, // How many items we want to display per page
     pageNum: 1 // Current page
   }
 })
