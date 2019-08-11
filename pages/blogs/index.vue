@@ -36,8 +36,12 @@
                 </div>
                 <div class="sidebar-list">
                   <!-- Featured Blogs -->
-                  <p>
-                    <nuxt-link :to="``">Some favorite blog</nuxt-link>
+                  <p
+                    v-for="fBlog in featuredBlogs"
+                    :key="fBlog._id">
+                    <nuxt-link :to="`/blogs/${fBlog.slug}`">
+                      {{fBlog.title}}
+                    </nuxt-link>
                   </p>
                   <!-- Featured Blogs -->
                 </div>
@@ -55,7 +59,8 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      publishedBlogs: state => state.blog.items.all
+      publishedBlogs: state => state.blog.items.all,
+      featuredBlogs: state => state.blog.items.featured,
     })
   },
   async fetch({store}) {
