@@ -25,7 +25,7 @@
             <div class="section">
               <no-ssr placeholder="Loading...">
                 <paginate
-                  :page-count="5"
+                  :page-count="pagination.pageCount"
                   :click-handler="handleClick"
                   :prev-text="'Prev'"
                   :next-text="'Next'"
@@ -70,10 +70,15 @@ export default {
     ...mapState({
       publishedBlogs: state => state.blog.items.all,
       featuredBlogs: state => state.blog.items.featured,
+      pagination: state => state.blog.pagination
     })
   },
   async fetch({store}) {
-    await store.dispatch('blog/fetchBlogs')
+    const filter = {}
+    filter.pageNum = 1
+    filter.pageSize = 2
+
+    await store.dispatch('blog/fetchBlogs', filter)
     await store.dispatch('blog/fetchFeaturedBlogs', {'filter[featured]': true})
   },
   methods: {
