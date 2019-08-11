@@ -60,6 +60,7 @@
                 <div
                   v-for="pBlog in published"
                   :key="pBlog._id"
+                  :class="{featured: pBlog.featured}"
                   class="blog-card">
                   <!-- title -->
                   <h2>{{displayBlogTitle(pBlog)}}</h2>
@@ -127,7 +128,11 @@ export default {
       }
     },
     updateBlog(blog) {
-      this.$store.dispatch('instructor/blog/updatePublishedBlog')
+      const featured = !blog.featured
+      const featureStatus = featured ? 'Featured' : 'Un-Featured'
+
+      this.$store.dispatch('instructor/blog/updatePublishedBlog', {id: blog._id, data: {featured}})
+      .then(_ => this.$toasted.success(`Blog has been ${featureStatus}!`, {duration: 2000}))
     },
     publishedOptions(isFeatured) {
       return createPublishedOptions(isFeatured)
@@ -168,7 +173,7 @@ export default {
       color: rgba(0, 0, 0, 0.54);
     }
     &.featured {
-      border-left: 5px solid #3cc314;
+      border-left: 8px solid #3cc314;
       padding-left: 10px;
       transition: border ease-out 0.2s;
     }
