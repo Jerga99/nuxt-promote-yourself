@@ -18,7 +18,7 @@
             openBtnClass="button is-primary is-inverted is-medium is-outlined"
             title="Make Course Hero"
             @opened="applyCourseValues"
-            @submitted="() => {}">
+            @submitted="createCourseHero">
             <div>
               <form>
                 <div class="field">
@@ -42,7 +42,7 @@
                     placeholder="Get all of the course for 9.99$">
                 </div>
                 <div class="field">
-                  <label class="label">Course image</label>
+                  <label class="label">Hero image</label>
                   <span class="label-info">Image in format 3 by 1 (720 x 240)</span>
                   <input
                     v-model="courseHero.image"
@@ -163,6 +163,15 @@ export default {
       this.$store.dispatch('instructor/course/updateCourse')
         .then(_ => this.$toasted.success('Course has been succefuly updated!', {duration: 3000}))
         .catch(error => this.$toasted.error('Course cannot be updated!'), {duration: 3000})
+    },
+    createCourseHero({closeModal}) {
+      const heroData = {...this.courseHero}
+      heroData.product = {...this.course}
+      this.$store.dispatch('hero/createHero', heroData)
+        .then(() => {
+          closeModal()
+          this.$toasted.success('Course Hero was created!', {duration: 3000})
+        })
     },
     handleCourseUpdate({value, field}) {
       this.$store.dispatch('instructor/course/updateCourseValue', {field, value})
