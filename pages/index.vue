@@ -1,6 +1,11 @@
 <template>
   <div>
-    <hero />
+    <hero
+      :title="courseHero.title"
+      :subtitle="courseHero.subtitle"
+      :image="courseHero.image"
+      :promoLink="courseHero.product && courseHero.product.productLink"
+    />
     <section class="section">
       <div class="container">
         <h1 class="title">Featured Courses</h1>
@@ -45,6 +50,7 @@ export default {
     ...mapState({
       courses: state => state.course.items,
       featuredBlogs: state => state.blog.items.featured,
+      courseHero: state => state.hero.item
     })
   },
   async fetch({store}) {

@@ -13,6 +13,15 @@ export const actions = {
         return state.item
       })
       .catch(error => Promise.reject(error))
+  },
+  fetchHero({commit, state}) {
+    return this.$axios.$get('/api/v1')
+      .then(data => {
+        const { productHero } = data
+        commit('setHero', productHero)
+        return state.item
+      })
+      .catch(error => Promise.error(error))
   }
 }
 
