@@ -37,7 +37,10 @@
               type="text"
               placeholder="Write something catchy about the course">
             </textarea> -->
-            <course-editor :initialContent="course.description"/>
+            <course-editor
+              :initialContent="course.description"
+              @editorUpdated="(content) => emitCourseValue(content, 'description')"
+            />
           </div>
         </div>
         <div class="field">
@@ -122,7 +125,7 @@ export default {
   },
   methods: {
     emitCourseValue(e, field) {
-      const value = e.target.value
+      const value = e.target ? e.target.value : e
 
       if (field === 'category') {
         return this.emitCategory(value, field)

@@ -45,13 +45,22 @@ export default {
         new OrderedList(),
         new BulletList(),
         new ListItem()
-      ]
+      ],
+      onUpdate: () => {
+        this.emitUpdate()
+      }
     })
 
     this.initialContent && this.editor.setContent(this.initialContent)
   },
   beforeDestroy() {
     this.editor && this.editor.destroy()
+  },
+  methods: {
+    emitUpdate() {
+      const content = this.editor.getHTML()
+      this.$emit('editorUpdated', content)
+    }
   }
 }
 </script>
