@@ -3,6 +3,8 @@
   <div class="heroes-page">
     <div class="container">
       <h1 class="title">Course Heroes</h1>
+      <portal-target name="modal-view-hero-1" />
+      <portal-target name="modal-view-hero-2" />
       <table class="heroes-table table is-responsive">
         <thead>
           <tr class="main-table-row">
@@ -19,24 +21,26 @@
             <td>Hero Subtitle</td>
             <td>Active/ Inactive</td>
             <td class="modal-td" v-show="false">
-            <Modal
-              ref="modal-1"
-              :showButton="false"
-              actionTitle="Make Active"
-              openTitle="Favorite"
-              title="Make Course Hero">
-              <div>
-                <div class="subtitle">
-                  Title: Some Title
+            <portal to="modal-view-hero-1">
+              <Modal
+                ref="modal-1"
+                :showButton="false"
+                actionTitle="Make Active"
+                openTitle="Favorite"
+                title="Make Course Hero">
+                <div>
+                  <div class="subtitle">
+                    Title: Some Title
+                  </div>
+                  <div class="subtitle">
+                    Subtitle: Some Subtitle
+                  </div>
+                  <figure class="image is-3by1">
+                    <img>
+                  </figure>
                 </div>
-                <div class="subtitle">
-                  Subtitle: Some Subtitle
-                </div>
-                <figure class="image is-3by1">
-                  <img>
-                </figure>
-              </div>
-            </Modal>
+              </Modal>
+            </portal>
             </td>
           </tr>
           <tr @click="openModal('2')" class="table-row">
@@ -45,24 +49,26 @@
             <td>Hero Subtitle</td>
             <td>Active/ Inactive</td>
             <td class="modal-td" v-show="false">
-            <Modal
-              ref="modal-2"
-              :showButton="false"
-              actionTitle="Make Active"
-              openTitle="Favorite"
-              title="Make Course Hero">
-              <div>
-                <div class="subtitle">
-                  Title: Some Title 2
+            <portal to="modal-view-hero-2">
+              <Modal
+                ref="modal-2"
+                :showButton="false"
+                actionTitle="Make Active"
+                openTitle="Favorite"
+                title="Make Course Hero">
+                <div>
+                  <div class="subtitle">
+                    Title: Some Title 2
+                  </div>
+                  <div class="subtitle">
+                    Subtitle: Some Subtitle 2
+                  </div>
+                  <figure class="image is-3by1">
+                    <img>
+                  </figure>
                 </div>
-                <div class="subtitle">
-                  Subtitle: Some Subtitle 2
-                </div>
-                <figure class="image is-3by1">
-                  <img>
-                </figure>
-              </div>
-            </Modal>
+              </Modal>
+            </portal>
             </td>
           </tr>
         </tbody>

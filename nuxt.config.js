@@ -44,6 +44,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'portal-vue/nuxt'
   ],
   /*
   ** Axios module configuration
