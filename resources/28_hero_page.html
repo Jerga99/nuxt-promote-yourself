@@ -1,0 +1,109 @@
+
+<template>
+  <div class="heroes-page">
+    <div class="container">
+      <h1 class="title">Course Heroes</h1>
+      <table class="heroes-table table is-responsive">
+        <thead>
+          <tr class="main-table-row">
+            <th>Image</th>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr @click="openModal('1')" class="table-row">
+            <td>Hero Image</td>
+            <td>Hero Title</td>
+            <td>Hero Subtitle</td>
+            <td>Active/ Inactive</td>
+            <td class="modal-td" v-show="false">
+            <Modal
+              ref="modal-1"
+              :showButton="false"
+              actionTitle="Make Active"
+              openTitle="Favorite"
+              title="Make Course Hero">
+              <div>
+                <div class="subtitle">
+                  Title: Some Title
+                </div>
+                <div class="subtitle">
+                  Subtitle: Some Subtitle
+                </div>
+                <figure class="image is-3by1">
+                  <img>
+                </figure>
+              </div>
+            </Modal>
+            </td>
+          </tr>
+          <tr @click="openModal('2')" class="table-row">
+            <td>Hero Image</td>
+            <td>Hero Title</td>
+            <td>Hero Subtitle</td>
+            <td>Active/ Inactive</td>
+            <td class="modal-td" v-show="false">
+            <Modal
+              ref="modal-2"
+              :showButton="false"
+              actionTitle="Make Active"
+              openTitle="Favorite"
+              title="Make Course Hero">
+              <div>
+                <div class="subtitle">
+                  Title: Some Title 2
+                </div>
+                <div class="subtitle">
+                  Subtitle: Some Subtitle 2
+                </div>
+                <figure class="image is-3by1">
+                  <img>
+                </figure>
+              </div>
+            </Modal>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+<script>
+import Modal from '~/components/shared/Modal'
+export default {
+  middleware: 'admin',
+  components: {
+    Modal
+  }
+  methods: {
+    openModal(modalId) {
+      this.$refs[`modal-${modalId}`].openModal()
+    }
+  }
+}
+</script>
+<style scoped lang="scss">
+  .heroes-page {
+    max-width: 1000px;
+    margin: 0 auto 5rem auto;
+    margin-top: 40px;
+  }
+  .title {
+    font-size: 45px;
+    font-weight: bold;
+  }
+  .isActive {
+  }
+  .table-row {
+    margin: 20px;
+    &.isActive {
+      background-color: #dfffe1
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #e4e4e4;
+    }
+  }
+</style>
