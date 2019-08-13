@@ -1,11 +1,12 @@
 <template>
-  <h1>I am CV page</h1>
+  <div>
+    <iframe :style="{width: '100%', height: '800px'}" src="/jerga_cv.pdf"></iframe>
+  </div>
 </template>
-
 <script>
 export default {
   head: {
-    title: 'CV | Filip Jerga'
+    title: 'Filip Jerga CV | Filip Jerga'
   }
 }
 </script>

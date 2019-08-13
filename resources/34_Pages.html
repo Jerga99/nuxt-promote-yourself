@@ -1,8 +1,9 @@
+<!-- About -->
 <template>
   <div class="about-page">
     <div class="container">
       <figure class="avatar">
-        <img src="/me.jpg">
+        <img src="/me.png">
       </figure>
       <p>My name is Filip Jerga and I am an experienced software engineer and freelance developer.</p>
       <br>
@@ -41,3 +42,19 @@ export default {
     box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
   }
 </style>
+
+
+
+<!-- CV -->
+<template>
+  <div>
+    <iframe :style="{width: '100%', height: '800px'}" src="/jerga_cv.pdf"></iframe>
+  </div>
+</template>
+<script>
+export default {
+  head: {
+    title: 'Filip Jerga CV | Filip Jerga'
+  }
+}
+</script>
