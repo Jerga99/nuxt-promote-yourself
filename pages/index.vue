@@ -16,7 +16,20 @@
             :key="course._id"
             class="column is-one-quarter">
             <!-- pass a course as a prop to course-card -->
-            <course-card :course="course"/>
+            <v-popover
+              offset="16"
+              trigger="hover"
+              placement="right-start">
+              <course-card :course="course"/>
+              <template slot="popover">
+                <course-card-tooltip
+                  :title="course.title"
+                  :subtitle="course.category.name"
+                  :description="course.subtitle"
+                  :wsl="course.wsl"
+                />
+              </template>
+            </v-popover>
           </div>
         </div>
       </div>
@@ -39,12 +52,13 @@
 
 <script>
 import CourseCard from '~/components/CourseCard'
+import CourseCardTooltip from '~/components/CourseCardTooltip'
 import BlogCard from '~/components/BlogCard'
 import Hero from '~/components/shared/Hero'
 import { mapState } from 'vuex'
 export default {
   components: {
-    CourseCard, BlogCard, Hero
+    CourseCard, BlogCard, Hero, CourseCardTooltip
   },
   computed: {
     ...mapState({
