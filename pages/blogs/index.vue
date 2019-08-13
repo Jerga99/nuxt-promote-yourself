@@ -67,6 +67,9 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  head: {
+    title: 'Amazing tech blogs | Filip Jerga'
+  },
   computed: {
     ...mapState({
       publishedBlogs: state => state.blog.items.all,
