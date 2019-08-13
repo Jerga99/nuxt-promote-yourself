@@ -6,7 +6,8 @@
       </nuxt-link>
       <!-- Adds click to open -->
       <!-- Adds active class -->
-      <a @click="() => {}"
+      <a @click="isActive = !isActive"
+         :class="{'is-active': isActive}"
          role="button"
          class="navbar-burger burger"
          aria-label="menu"
@@ -19,7 +20,8 @@
     </div>
 
     <!-- Adds active class -->
-    <div id="navbarBasicExample"
+    <div :class="{'is-active': isActive}"
+         id="navbarBasicExample"
          class="navbar-menu">
       <div class="navbar-start">
         <nav-link to="/" class="navbar-item">
@@ -77,6 +79,11 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  data() {
+    return {
+      isActive: false
+    }
+  },
   computed: {
     ...mapGetters({
       'user': 'auth/authUser',
