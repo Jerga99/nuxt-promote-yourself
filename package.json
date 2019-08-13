@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/style-resources": "^1.0.0",
     "async": "^3.0.1",
     "async-lock": "^1.2.0",
     "bcrypt": "^3.0.6",
