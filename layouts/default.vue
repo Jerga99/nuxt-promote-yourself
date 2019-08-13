@@ -2,13 +2,15 @@
   <div>
     <navbar />
     <nuxt />
+    <app-footer />
   </div>
 </template>
 <script>
+import AppFooter from '~/components/shared/Footer'
 import Navbar from '~/components/shared/Navbar'
 export default {
   components: {
-    Navbar
+    Navbar, AppFooter
   }
 }
 </script>
