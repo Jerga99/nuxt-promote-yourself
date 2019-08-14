@@ -1,7 +1,7 @@
 
 
 export const state = () => ({
-  item: null
+  item: {}
 })
 
 
